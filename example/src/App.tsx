@@ -52,7 +52,7 @@ export default function App() {
         data={filteredData}
         inputValue={query}
         searchable={true}
-        label="Select Country"
+        label="Επιλέξτε κατηγορία"
         setSelected={setSelected}
         onSearch={onSearch}
       />

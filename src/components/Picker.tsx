@@ -5,6 +5,7 @@ import {
   TextInput,
   ActivityIndicator,
   Text,
+  FlatList,
   Dimensions,
   SafeAreaView,
 } from 'react-native';
@@ -13,8 +14,6 @@ import ActionSheet, {
   SheetManager,
   useScrollHandlers,
 } from 'react-native-actions-sheet';
-
-import { FlatList } from 'react-native-gesture-handler';
 
 import type { PickerProps } from './Picker.types';
 import { StyleSheet } from 'react-native';
@@ -68,7 +67,12 @@ export const Picker = <T,>({
         setSelectedKey(index);
       }}
     >
-      <Text style={{ fontWeight: selectedKey !== index ? 'normal' : 'bold' }}>
+      <Text
+        style={{
+          fontWeight: selectedKey !== index ? 'normal' : 'bold',
+          color: '#000',
+        }}
+      >
         {item.name ? item.name : null}
       </Text>
     </TouchableOpacity>
@@ -86,12 +90,12 @@ export const Picker = <T,>({
       id={id}
       ref={actionSheetRef}
       indicatorStyle={styles.indicator}
-      gestureEnabled={true}
       {...actionsSheetProps}
     >
       <SafeAreaView
         style={{
-          height: height,
+          maxHeight: 500,
+          paddingTop: 20,
         }}
       >
         <FlatList<T>
